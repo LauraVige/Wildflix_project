@@ -7,9 +7,13 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import StandardScaler
 import streamlit as st
+from PIL import Image
 
 # add page icon
 st.set_page_config(layout="centered", page_icon = ":clapper:")
+
+image = Image.open('wildflix_logo.png')
+st.image(image, caption='Logo Wildflix')
 
 # Ajout titre
 st.title('Wildflix project !')
