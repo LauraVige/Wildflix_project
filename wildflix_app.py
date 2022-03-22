@@ -19,7 +19,7 @@ st.image(image, caption='Logo Wildflix')
 st.title('Wildflix project !')
 
 # Import des fichiers
-df_mod_daw = pd.read_csv(uploaded_file, index_col="title")
+df_mod_daw = pd.read_csv("wildflix_project.csv", index_col="title")
 df = pd.read_csv("wildflix__BDD_cine (2).csv")
 
 # Variables numeriques a prendre en compte 
