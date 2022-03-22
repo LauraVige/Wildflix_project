@@ -6,7 +6,6 @@ import numpy as np
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import StandardScaler
-from IPython.display import display, HTML
 import streamlit as st
 
 # Ajout titre
