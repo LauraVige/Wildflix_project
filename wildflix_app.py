@@ -19,16 +19,12 @@ uploaded_file = st.file_uploader("Import du fichier wildflix_project :")
 if uploaded_file is not None:
   df_mod_daw = pd.read_csv(uploaded_file, index_col="title")
 
-
 uploaded_file2 = st.file_uploader("Import du fichier wildflix__BDD_cine :")
 if uploaded_file2 is not None:
   df = pd.read_csv(uploaded_file2)
 
 # Variables numeriques a prendre en compte 
 X = df_mod_daw.select_dtypes('number')
-
-st.write(df.head())
-st.write(df_mod_daw.head())
 
 # Selection du film
 titre = st.text_input('Veuillez saisir un titre de film :', '')
