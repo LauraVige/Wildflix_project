@@ -62,6 +62,7 @@ def RecommandFilm() :
 
         # pour les recommandations :
         reco = df.iloc[an_array[i][1:10]]
+        reco.set_index("title", inplace=True)
         reco = reco[["startYear","genres","directors_name","actors_name","averageRating"]] # select des colonnes interessantes 
         reco = reco.rename(columns = {"startYear":"Année","genres":"Genres","directors_name":"Réalisateur·rice","averageRating": "Note"}) # rename des colonnes
         reco.index.names = ['Titre'] # rename de l'index
