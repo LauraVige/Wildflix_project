@@ -8,6 +8,9 @@ from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import StandardScaler
 import streamlit as st
 
+# add page icon
+st.set_page_config(layout="centered", page_icon = ":clapper:")
+
 # Ajout titre
 st.title('Wildflix project !')
 
@@ -68,6 +71,7 @@ def RecommandFilm() :
         reco.index.names = ['Titre'] # rename de l'index
         # pour le film selectionne :
         film_find = df.iloc[an_array[i][0]]
+        film_find.set_index("title", inplace=True)
         film_find = film_find[["startYear","genres", "directors_name"]]# select des colonnes interessantes
         film_find = film_find.to_frame().T # transfo en df
         film_find = film_find.rename(columns = {"startYear":"Année","genres":"Genres","directors_name":"Réalisateur·rice"}) # rename des colonnes
