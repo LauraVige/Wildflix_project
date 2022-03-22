@@ -12,7 +12,7 @@ from PIL import Image
 # add page icon
 st.set_page_config(layout="centered", page_icon = ":clapper:")
 
-image = Image.open('wildflix_logo.png')
+image = Image.open('logo_wildflix.png')
 st.image(image, caption='Logo Wildflix')
 
 # Ajout titre
