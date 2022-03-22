@@ -22,6 +22,8 @@ st.title('Wildflix project !')
 uploaded_file = st.file_uploader("Import du fichier wildflix_project :")
 if uploaded_file is not None:
   df_mod_daw = pd.read_csv(uploaded_file, index_col="title")
+# Import fichier 
+df = pd.read_csv("wildflix__BDD_cine (2).csv")
 
 # Variables numeriques a prendre en compte 
 X = df_mod_daw.select_dtypes('number')
