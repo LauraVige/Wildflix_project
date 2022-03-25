@@ -26,6 +26,9 @@ df_mod_daw.set_index("title", inplace=True)
 # file with infos
 df = pd.read_csv("wildflix__BDD_cine (2).csv")
 
+st.dataframe(df_mod_daw)
+st.dataframe(df)
+
 # Variables numeriques a prendre en compte 
 X = df_mod_daw.select_dtypes('number')
 
