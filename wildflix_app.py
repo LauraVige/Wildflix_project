@@ -19,7 +19,7 @@ st.image(image, caption='Logo Wildflix')
 st.title('Wildflix project !')
 
 # Import des fichiers
-npz = np.load("wildflix_project.npz")
+npz = np.load("wildflix_project.npz", allow_pickle=True)
 df_mod_daw = pd.DataFrame.from_dict({item: npz[item] for item in npz.files}, orient='index', index_col="title")
 df = pd.read_csv("wildflix__BDD_cine (2).csv")
 
