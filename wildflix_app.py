@@ -23,6 +23,13 @@ st.title('Wildflix project !')
 npz = np.load("wildflix_project.npz", allow_pickle=True)["data"]
 df_mod_daw = pd.DataFrame(npz[1:], columns = npz[0])
 df_mod_daw.set_index("title", inplace=True)
+
+# je change le type des colonnes en int car toutes des obj apres import npz 
+col_object = ["title", "writers_name"]
+for c in df_mod_daw:
+    if c not in col_object:
+        df_mod_daw[c] = df_mod_daw[c].astype(int)
+        
 # file with infos
 df = pd.read_csv("wildflix__BDD_cine (2).csv")
 
