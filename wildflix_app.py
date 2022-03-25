@@ -19,9 +19,11 @@ st.image(image, caption='Logo Wildflix')
 st.title('Wildflix project !')
 
 # Import des fichiers
-npz = np.load("wildflix_project.npz", allow_pickle=True)
-df_mod_daw = pd.DataFrame.from_dict({item: npz[item] for item in npz.files}, orient='index')
+# file for machine learning
+npz = np.load("wildflix_project.npz", allow_pickle=True)["data"]
+df_mod_daw = pd.DataFrame(npz[1:], columns = npz[0])
 df_mod_daw.set_index("title", inplace=True)
+# file with infos
 df = pd.read_csv("wildflix__BDD_cine (2).csv")
 
 # Variables numeriques a prendre en compte 
