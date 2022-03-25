@@ -20,7 +20,7 @@ st.title('Wildflix project !')
 
 # Import des fichiers
 npz = np.load("wildflix_project.npz", allow_pickle=True)
-df_mod_daw = pd.DataFrame.from_dict({item: npz[item] for item in npz.files}, orient='index', index_col="title")
+df_mod_daw = pd.DataFrame.from_dict({item: npz[item] for item in npz.files}, orient='index')
 df = pd.read_csv("wildflix__BDD_cine (2).csv")
 
 # Variables numeriques a prendre en compte 
