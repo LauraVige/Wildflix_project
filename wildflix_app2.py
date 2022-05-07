@@ -26,6 +26,7 @@ df_two = pd.read_csv("wildflix_project_two.csv")
 df_final = pd.concat([df_one,df_two])
 
 df_final.set_index("title", inplace=True)
+df_final["averageRating"] = round(df_final["averageRating"],1)
 st.dataframe(df_final.head())
 
 # file with infos
