@@ -24,7 +24,9 @@ df_one = pd.read_csv("wildflix_project_one.csv")
 df_two = pd.read_csv("wildflix_project_two.csv")
 
 df_final = pd.concat([df_one,df_two])
-        
+
+st.dataframe(df_final.head())
+
 # file with infos
 df = pd.read_csv("wildflix__BDD_cine (2).csv")
 
