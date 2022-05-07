@@ -7,6 +7,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import StandardScaler
 import streamlit as st
+from streamlit_option_menu import option_menu
 from PIL import Image
 
 # add page icon
@@ -15,19 +16,17 @@ st.set_page_config(layout="centered", page_icon = ":clapper:")
 image = Image.open('logo_wildflix.png')
 st.image(image, caption='Logo Wildflix')
 
-# Using object notation
-add_selectbox = st.sidebar.selectbox(
-    "How would you like to be contacted?",
-    ("Email", "Home phone", "Mobile phone")
-)
-
-# Using "with" notation
 with st.sidebar:
-    add_radio = st.radio(
-        "Choose a shipping method",
-        ("Standard (5-15 days)", "Express (2-5 days)")
-    ) 
-    
+    choose = option_menu("App Gallery", ["Recommandation", "Information", "Contact"],
+                         icons=['house', 'camera fill', 'kanban', 'book','person lines fill'],
+                         menu_icon="app-indicator", default_index=0,
+                         styles={
+        "container": {"padding": "5!important", "background-color": "#fafafa"},
+        "icon": {"color": "orange", "font-size": "25px"}, 
+        "nav-link": {"font-size": "16px", "text-align": "left", "margin":"0px", "--hover-color": "#eee"},
+        "nav-link-selected": {"background-color": "#02ab21"},
+    }
+    )
 # Ajout titre
 st.title('Wildflix project !')
 
