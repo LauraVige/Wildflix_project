@@ -1,5 +1,5 @@
 ### Script streamlit pour l'application du projet 2 
-
+pip install streamlit-option-menu
 # Import des librairies 
 import pandas as pd
 import numpy as np
