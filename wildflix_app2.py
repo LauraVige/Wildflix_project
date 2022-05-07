@@ -1,5 +1,5 @@
 ### Script streamlit pour l'application du projet 2 
-pip install streamlit-option-menu
+
 # Import des librairies 
 import pandas as pd
 import numpy as np
@@ -7,7 +7,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import StandardScaler
 import streamlit as st
-from streamlit_option_menu import option_menu
+
 from PIL import Image
 
 # add page icon
@@ -16,17 +16,6 @@ st.set_page_config(layout="centered", page_icon = ":clapper:")
 image = Image.open('logo_wildflix.png')
 st.image(image, caption='Logo Wildflix')
 
-with st.sidebar:
-    choose = option_menu("App Gallery", ["Recommandation", "Information", "Contact"],
-                         icons=['house', 'camera fill', 'kanban', 'book','person lines fill'],
-                         menu_icon="app-indicator", default_index=0,
-                         styles={
-        "container": {"padding": "5!important", "background-color": "#fafafa"},
-        "icon": {"color": "orange", "font-size": "25px"}, 
-        "nav-link": {"font-size": "16px", "text-align": "left", "margin":"0px", "--hover-color": "#eee"},
-        "nav-link-selected": {"background-color": "#02ab21"},
-    }
-    )
 # Ajout titre
 st.title('Wildflix project !')
 
@@ -43,6 +32,10 @@ df_final["averageRating"] = round(df_final["averageRating"],1)
 
 # file with infos
 df = pd.read_csv("wildflix__BDD_cine (2).csv")
+
+# Side bar
+st.sidebar.markdown("## Main Menu")
+    if st.sidebar.button("Recommandation")
 
 # Variables numeriques a prendre en compte 
 X = df_final.select_dtypes('number')
