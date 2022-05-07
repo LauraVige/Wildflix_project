@@ -15,6 +15,19 @@ st.set_page_config(layout="centered", page_icon = ":clapper:")
 image = Image.open('logo_wildflix.png')
 st.image(image, caption='Logo Wildflix')
 
+# Using object notation
+add_selectbox = st.sidebar.selectbox(
+    "How would you like to be contacted?",
+    ("Email", "Home phone", "Mobile phone")
+)
+
+# Using "with" notation
+with st.sidebar:
+    add_radio = st.radio(
+        "Choose a shipping method",
+        ("Standard (5-15 days)", "Express (2-5 days)")
+    ) 
+    
 # Ajout titre
 st.title('Wildflix project !')
 
@@ -27,7 +40,7 @@ df_final = pd.concat([df_one,df_two])
 
 df_final.set_index("title", inplace=True)
 df_final["averageRating"] = round(df_final["averageRating"],1)
-st.dataframe(df_final.head())
+
 
 # file with infos
 df = pd.read_csv("wildflix__BDD_cine (2).csv")
