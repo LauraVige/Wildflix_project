@@ -35,7 +35,7 @@ df = pd.read_csv("wildflix__BDD_cine (2).csv")
 
 # Side bar
 st.sidebar.markdown("## Main Menu")
-    if st.sidebar.button("Recommandation")
+
 
 # Variables numeriques a prendre en compte 
 X = df_final.select_dtypes('number')
