@@ -1,7 +1,6 @@
 # Script streamlit pour l'application du projet 2 
 
 # Import des librairies 
-from logging import info
 import pandas as pd
 import numpy as np
 import seaborn as sns
