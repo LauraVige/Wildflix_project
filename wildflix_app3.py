@@ -61,7 +61,6 @@ def accueil():
     st.write ("- L'équipe Wildflix")
     
 def info_plot():
-    st.header("Informations sur les films cinématographiques")
     sd = st.selectbox(
         "Graphique", #Drop Down Menu Name
         [
