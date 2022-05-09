@@ -1,8 +1,11 @@
 # Script streamlit pour l'application du projet 2 
 
 # Import des librairies 
+from logging import info
 import pandas as pd
 import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import StandardScaler
@@ -43,7 +46,7 @@ def choix_page():
         }
     
     with st.sidebar:
-        page = st.selectbox("Choisir une page :", list(pages.keys()))
+        page = st.selectbox("Menu", list(pages.keys()))
     
     pages[page]()
     
@@ -51,16 +54,55 @@ def choix_page():
     
     
 def accueil():
-    st.write("Choisir une page sur la gauche")
+    image = Image.open('logo_wildflix.png')
+    st.image(image, caption='Logo Wildflix')
+    st.header("Bienvenue sur notre app Streamlit")
+    st.write("Cette petite application streamlit reprend notre travail effectué dans le cadre d'un projet \
+        pendant la formation de Data Analyst")
+    st.write ("- L'équipe Wildflix")
     
-    
-    
+def info_plot():
+    st.header("Informations sur les films cinématographiques")
+    sd = st.selectbox(
+        "Graphique", #Drop Down Menu Name
+        [
+            "Nombre de film par décennie", 
+            "Durée des films" ,
+            "Durée des films par décennie"  
+        ]
+    )
+
+    fig = plt.figure(figsize=(12, 6))
+
+    if sd == "Nombre de film par décennie":
+        movies_year = pd.read_csv("movies_year.csv")
+        sns.barplot( x="Decennie", y = "Nb_movies", color='mediumorchid', data = movies_year)
+        plt.title('Nombre de film par decennie')
+        plt.xlabel('Années')
+        plt.ylabel('Count')
+
+    elif sd == "Durée des films":
+        df = import_data_info()
+        plt.hist(df["runtimeMinutes"], range=(40, 240), bins=20, color = "mediumorchid", ec='black')
+        plt.title("Répartition de la quantité de films selon leur durée")
+        plt.xlabel("Durée (minutes)")
+        plt.ylabel("Nombre de film")
+
+    elif sd == "Durée des films par décennie":
+        df = import_data_info()
+        df["decennie"] = ((df['startYear'] // 10) * 10)
+        sns.boxplot(data=df, x="decennie", y="runtimeMinutes", color='mediumorchid', showfliers=False)
+        plt.ylim(40,160)
+        plt.title('Durée des films par decennie')
+        plt.xlabel('Années')
+        plt.ylabel('Minutes')
+
+    st.pyplot(fig)
+
 def stat_cinema():
-    
-    df_final, df = import_data_info()
-    
-    ### selectionner villes
-   #select_villes = st.multiselect("Choisissez une/des ville(s) :", data_crime["city"].unique())
+    st.header("Quelques informations à propos des films cinématographiques de notre base de données.")
+    info_plot()
+
 
 def to_X():
     df_final = import_data_ml()
